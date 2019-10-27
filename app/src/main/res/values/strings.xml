@@ -1,3 +1,9 @@
 <resources>
     <string name="app_name">PublicApp</string>
+    <string name="AceitarTermo">Aceito os termos e condições.</string>
+    <string name="Entrar">Entrar</string>
+    <string name="NaoTemCadastro">Ainda não tenho Cadastro</string>
+    <string name="descricaoImgLogo">LOGO APP</string>
+    <string name="Email">E-mail</string>
+    <string name="Senha">Senha</string>
 </resources>
