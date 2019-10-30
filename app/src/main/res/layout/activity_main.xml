@@ -65,7 +65,7 @@
         />
 
     <Button
-        android:id="@+id/button"
+        android:id="@+id/btnEntrar"
         android:layout_width="150dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="32dp"
@@ -89,8 +89,8 @@
         android:textSize="18sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="@+id/button"
-        app:layout_constraintTop_toBottomOf="@+id/button"
+        app:layout_constraintStart_toStartOf="@+id/btnEntrar"
+        app:layout_constraintTop_toBottomOf="@+id/btnEntrar"
         app:layout_constraintVertical_bias="0.13999999" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
