@@ -62,6 +62,7 @@ public class Login extends AppCompatActivity implements View.OnClickListener {
                             startActivity(new Intent(getBaseContext(),homeUser.class));
                          }else {
                             String erro = task.getException().toString();
+                            //teste
                             opcoesdeerros(erro);
                         }
                     }
