@@ -12,7 +12,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="86dp"
+        android:layout_marginTop="160dp"
         android:layout_marginEnd="8dp"
         android:contentDescription="@string/descricaoImgLogo"
         android:hapticFeedbackEnabled="false"
@@ -21,76 +21,37 @@
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/logo03" />
 
-    <EditText
-        android:id="@+id/editText"
-        android:layout_width="@dimen/LoginEmail"
-        android:layout_height="50dp"
-        android:layout_marginTop="64dp"
-        android:background="@drawable/bg_edittext_rounded"
-        android:ems="10"
-        android:hint="@string/Email"
-        android:importantForAutofill="no"
-        android:inputType="textEmailAddress"
-        app:layout_constraintEnd_toEndOf="@+id/imageView"
-        app:layout_constraintStart_toStartOf="@+id/imageView"
-        app:layout_constraintTop_toBottomOf="@+id/imageView"
-        android:paddingLeft="8dp"/>
-
-    <EditText
-        android:id="@+id/editText2"
-        android:layout_width="@dimen/LoginEmail"
-        android:layout_height="50dp"
-        android:layout_marginTop="8dp"
-        android:background="@drawable/bg_edittext_rounded"
-        android:ems="10"
-        android:hint="@string/Senha"
-        android:importantForAutofill="no"
-        android:inputType="textPassword"
-        app:layout_constraintEnd_toEndOf="@+id/editText"
-        app:layout_constraintStart_toStartOf="@+id/editText"
-        app:layout_constraintTop_toBottomOf="@+id/editText"
-        android:paddingLeft="8dp"/>
-
-    <!-- android:importantForAutofill="no"  -verificar essa instrução depois-->
-
-    <CheckBox
-        android:id="@+id/checkBox"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="32dp"
-        android:text="@string/AceitarTermo"
-        app:layout_constraintEnd_toEndOf="@+id/editText2"
-        app:layout_constraintStart_toStartOf="@+id/editText2"
-        app:layout_constraintTop_toBottomOf="@+id/editText2"
-        />
 
     <Button
-        android:id="@+id/btnEntrar"
-        android:layout_width="150dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="32dp"
-        android:text="@string/Entrar"
-        app:layout_constraintEnd_toEndOf="@+id/checkBox"
-        app:layout_constraintStart_toStartOf="@+id/checkBox"
-        app:layout_constraintTop_toBottomOf="@+id/checkBox"
+        android:id="@+id/btnlogin"
+        android:layout_width="0dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="80dp"
+        android:layout_marginTop="160dp"
+        android:layout_marginEnd="80dp"
         android:background="@drawable/bg_button_rounded"
-        android:textColor="@color/branco"/>
-
-    <TextView
-        android:id="@+id/textView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginBottom="8dp"
-        android:text="@string/NaoTemCadastro"
-        android:textColor="@color/colorPrimary"
-        android:textSize="18sp"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:text="@string/login"
+        android:textAlignment="center"
+        android:textColor="@color/branco"
+        android:textSize="35sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="@+id/btnEntrar"
-        app:layout_constraintTop_toBottomOf="@+id/btnEntrar"
-        app:layout_constraintVertical_bias="0.13999999" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageView" />
+
+    <Button
+        android:id="@+id/btn_cadastrar"
+        android:layout_width="0dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="80dp"
+        android:layout_marginTop="24dp"
+        android:layout_marginEnd="80dp"
+        android:background="@drawable/bg_button_rounded"
+        android:text="@string/cadastrar"
+        android:textAlignment="center"
+        android:textColor="@color/branco"
+        android:textSize="35sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btnlogin" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

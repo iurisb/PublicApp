@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -8,193 +8,19 @@
     tools:context=".NewUser"
     android:background="@drawable/bg"
     android:orientation="vertical">
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
 
-        <ImageView
-            android:id="@+id/imageView2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="2dp"
-            android:layout_marginEnd="8dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:srcCompat="@drawable/logo01" />
-
-        <EditText
-            android:id="@+id/editText3"
-            android:layout_width="300dp"
-            android:layout_height="50dp"
-            android:layout_marginTop="8dp"
-            android:ems="10"
-            android:inputType="textPersonName"
-            app:layout_constraintEnd_toEndOf="@+id/imageView2"
-            app:layout_constraintStart_toStartOf="@+id/imageView2"
-            app:layout_constraintTop_toBottomOf="@+id/imageView2"
-            android:hint="Nome Completo"/>
-
-        <EditText
-            android:id="@+id/editText6"
-            android:layout_width="300dp"
-            android:layout_height="50dp"
-            android:layout_marginTop="8dp"
-            android:ems="10"
-            android:inputType="phone"
-            app:layout_constraintEnd_toEndOf="@+id/editText3"
-            app:layout_constraintStart_toStartOf="@+id/editText3"
-            app:layout_constraintTop_toBottomOf="@+id/editText3"
-            android:hint="Telefone"/>
-
-        <EditText
-            android:id="@+id/editText7"
-            android:layout_width="300dp"
-            android:layout_height="50dp"
-            android:layout_marginTop="8dp"
-            android:ems="10"
-            android:inputType="textEmailAddress"
-            app:layout_constraintEnd_toEndOf="@+id/editText6"
-            app:layout_constraintStart_toStartOf="@+id/editText6"
-            app:layout_constraintTop_toBottomOf="@+id/editText6"
-            android:hint="e-mail"/>
-
-        <EditText
-            android:id="@+id/editText9"
-            android:layout_width="300dp"
-            android:layout_height="50dp"
-            android:layout_marginTop="8dp"
-            android:ems="10"
-            android:inputType="textPersonName"
-            app:layout_constraintEnd_toEndOf="@+id/editText7"
-            app:layout_constraintStart_toStartOf="@+id/editText7"
-            app:layout_constraintTop_toBottomOf="@+id/editText7"
-            android:hint="Pais"/>
-
-        <EditText
-            android:id="@+id/editText10"
-            android:layout_width="300dp"
-            android:layout_height="50dp"
-            android:layout_marginTop="8dp"
-            android:ems="10"
-            android:inputType="textPersonName"
-            app:layout_constraintEnd_toEndOf="@+id/editText9"
-            app:layout_constraintStart_toStartOf="@+id/editText9"
-            app:layout_constraintTop_toBottomOf="@+id/editText9"
-            android:hint="Cidade"/>
-
-        <EditText
-            android:id="@+id/editText11"
-            android:layout_width="300dp"
-            android:layout_height="50dp"
-            android:layout_marginTop="8dp"
-            android:ems="10"
-            android:inputType="textPostalAddress"
-            app:layout_constraintEnd_toEndOf="@+id/editText10"
-            app:layout_constraintStart_toStartOf="@+id/editText10"
-            app:layout_constraintTop_toBottomOf="@+id/editText10"
-            android:hint="CEP"/>
-
-        <EditText
-            android:id="@+id/dtNasc"
-            android:layout_width="300dp"
-            android:layout_height="50dp"
-            android:layout_marginTop="8dp"
-            android:ems="10"
-            android:hint="Data de Nascimento"
-            android:inputType="textPersonName"
-            app:layout_constraintEnd_toEndOf="@+id/editText11"
-            app:layout_constraintStart_toStartOf="@+id/editText11"
-            app:layout_constraintTop_toBottomOf="@+id/editText11" />
-
-
-    </androidx.constraintlayout.widget.ConstraintLayout>
-
-
-    <RelativeLayout
-        android:layout_width="match_parent"
+    <ImageView
+        android:id="@+id/imageView2"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:gravity="center"
-        android:padding="8dp">
-
-        <RadioGroup
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            tools:layout_editor_absoluteX="-115dp"
-            tools:layout_editor_absoluteY="288dp"
-            android:orientation="horizontal">
-            <RadioButton
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:text="Masculino"
-                />
-            <RadioButton
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:text="Feminino"/>
-
-
-        </RadioGroup>
-    </RelativeLayout>
-
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="32dp"
+        android:layout_marginEnd="8dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent">
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/logo01" />
 
 
-        <EditText
-            android:id="@+id/editText12"
-            android:layout_width="300dp"
-            android:layout_height="50dp"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="8dp"
-            android:layout_marginEnd="8dp"
-            android:ems="10"
-            android:inputType="textPassword"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            android:hint="Senha"/>
 
-        <EditText
-            android:id="@+id/editText13"
-            android:layout_width="300dp"
-            android:layout_height="50dp"
-            android:layout_marginTop="8dp"
-            android:ems="10"
-            android:inputType="textPassword"
-            app:layout_constraintEnd_toEndOf="@+id/editText12"
-            app:layout_constraintStart_toStartOf="@+id/editText12"
-            app:layout_constraintTop_toBottomOf="@+id/editText12"
-            android:hint="Comfirmar Senha"/>
-
-        <CheckBox
-            android:id="@+id/checkBox2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:text="@string/AceitarTermo"
-            android:textSize="14sp"
-            app:layout_constraintEnd_toEndOf="@+id/editText13"
-            app:layout_constraintStart_toStartOf="@+id/editText13"
-            app:layout_constraintTop_toBottomOf="@+id/editText13" />
-
-        <Button
-            android:id="@+id/button2"
-            android:layout_width="200dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            android:background="@drawable/bg_button_rounded"
-            android:text="Cadastrar"
-            android:textColor="@color/branco"
-            app:layout_constraintEnd_toEndOf="@+id/checkBox2"
-            app:layout_constraintStart_toStartOf="@+id/checkBox2"
-            app:layout_constraintTop_toBottomOf="@+id/checkBox2" />
-
-    </androidx.constraintlayout.widget.ConstraintLayout>
-
-
-</LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

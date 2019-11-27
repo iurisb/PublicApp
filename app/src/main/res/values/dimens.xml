@@ -1,4 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <dimen name="LoginEmail">350dp</dimen>
+    <dimen name="txt_padrao">20sp</dimen>
 </resources>

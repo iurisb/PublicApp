@@ -6,4 +6,12 @@
     <string name="descricaoImgLogo">LOGO APP</string>
     <string name="Email">E-mail</string>
     <string name="Senha">Senha</string>
+    <string name="login">LOGIN</string>
+    <string name="cadastrar">CADASTRAR</string>
+    <string name="novousuario">Novo Usuário</string>
+    <string name="digiteseuemail">Digite Seu e-mail:</string>
+    <string name="digiteumasenha">Digite uma Senha:</string>
+    <string name="confirmeasenha">Confirme a senha:</string>
+    <string name="digiteasenhanovamente">Digite a Senha Novamente</string>
+    <string name="voltar">Voltar</string>
 </resources>
