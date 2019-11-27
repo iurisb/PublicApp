@@ -22,7 +22,7 @@
         app:srcCompat="@drawable/logo03" />
 
     <EditText
-        android:id="@+id/editText"
+        android:id="@+id/edtxt_emaillogin"
         android:layout_width="@dimen/LoginEmail"
         android:layout_height="50dp"
         android:layout_marginTop="64dp"
@@ -37,7 +37,7 @@
         android:paddingLeft="8dp"/>
 
     <EditText
-        android:id="@+id/editText2"
+        android:id="@+id/edtxt_senhalogin"
         android:layout_width="@dimen/LoginEmail"
         android:layout_height="50dp"
         android:layout_marginTop="8dp"
@@ -46,9 +46,9 @@
         android:hint="@string/Senha"
         android:importantForAutofill="no"
         android:inputType="textPassword"
-        app:layout_constraintEnd_toEndOf="@+id/editText"
-        app:layout_constraintStart_toStartOf="@+id/editText"
-        app:layout_constraintTop_toBottomOf="@+id/editText"
+        app:layout_constraintEnd_toEndOf="@+id/edtxt_emaillogin"
+        app:layout_constraintStart_toStartOf="@+id/edtxt_emaillogin"
+        app:layout_constraintTop_toBottomOf="@+id/edtxt_emaillogin"
         android:paddingLeft="8dp"/>
 
     <!-- android:importantForAutofill="no"  -verificar essa instrução depois-->
@@ -59,13 +59,13 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="32dp"
         android:text="@string/AceitarTermo"
-        app:layout_constraintEnd_toEndOf="@+id/editText2"
-        app:layout_constraintStart_toStartOf="@+id/editText2"
-        app:layout_constraintTop_toBottomOf="@+id/editText2"
+        app:layout_constraintEnd_toEndOf="@+id/edtxt_senhalogin"
+        app:layout_constraintStart_toStartOf="@+id/edtxt_senhalogin"
+        app:layout_constraintTop_toBottomOf="@+id/edtxt_senhalogin"
         />
 
     <Button
-        android:id="@+id/btnlogin"
+        android:id="@+id/btnlogar"
         android:layout_width="150dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="32dp"
@@ -75,22 +75,5 @@
         app:layout_constraintTop_toBottomOf="@+id/checkBox"
         android:background="@drawable/bg_button_rounded"
         android:textColor="@color/branco"/>
-
-    <TextView
-        android:id="@+id/textView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginBottom="8dp"
-        android:text="@string/NaoTemCadastro"
-        android:textColor="@color/colorPrimary"
-        android:textSize="18sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="@+id/btnlogin"
-        app:layout_constraintTop_toBottomOf="@+id/btnlogin"
-        app:layout_constraintVertical_bias="0.13999999" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -15,7 +15,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        Button login = (Button) findViewById(R.id.btnlogin);
+        Button login = (Button) findViewById(R.id.btnlogar);
         Button cadastro = (Button) findViewById(R.id.btn_cadastrar);
 
         login.setOnClickListener(this);
@@ -26,7 +26,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     @Override
     public void onClick(View view) {
         switch (view.getId()){
-            case R.id.btnlogin:
+            case R.id.btnlogar:
+                startActivity(new Intent(this, Login.class));
                 break;
             case R.id.btn_cadastrar:
                 startActivity(new Intent(this, CadastroUser.class));

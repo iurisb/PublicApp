@@ -23,7 +23,7 @@
 
 
     <Button
-        android:id="@+id/btnlogin"
+        android:id="@+id/btnlogar"
         android:layout_width="0dp"
         android:layout_height="50dp"
         android:layout_marginStart="80dp"
@@ -52,6 +52,6 @@
         android:textSize="35sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btnlogin" />
+        app:layout_constraintTop_toBottomOf="@+id/btnlogar" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

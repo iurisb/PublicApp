@@ -17,64 +17,52 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 
-public class CadastroUser extends AppCompatActivity implements View.OnClickListener {
+public class Login extends AppCompatActivity implements View.OnClickListener {
 
-    private FirebaseAuth auth;
-    private EditText edtxt_email, edtxt_pwd, edtxt_cpwd;
-    private Button btn_voltar, btn_cadastrarF;
+    FirebaseAuth auth;
+    EditText edtxtemail, edtxtpwd;
+    Button btnLogar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_cadastrouser);
+        setContentView(R.layout.activity_login);
 
-        edtxt_email = (EditText) findViewById(R.id.edtxt_emailCadastro);
-        edtxt_pwd = (EditText) findViewById(R.id.edtxt_pwdCadastro);
-        edtxt_cpwd = (EditText) findViewById(R.id.edtxt_pwdConfirmacaocadastro);
-        btn_voltar = (Button) findViewById(R.id.btn_voltar);
-        btn_cadastrarF = (Button) findViewById(R.id.btn_novocadastrodeusuario);
+        edtxtemail = (EditText) findViewById(R.id.edtxt_emaillogin);
+        edtxtpwd = (EditText) findViewById(R.id.edtxt_senhalogin);
+        btnLogar = (Button) findViewById(R.id.btnlogar);
 
         auth = FirebaseAuth.getInstance();
-
-        btn_voltar.setOnClickListener(this);
-        btn_cadastrarF.setOnClickListener(this);
-
+        btnLogar.setOnClickListener(this);
 
     }
 
     @Override
     public void onClick(View view) {
         switch (view.getId()){
-            case R.id.btn_voltar:
-                startActivity(new Intent(this, MainActivity.class));
-                break;
-            case R.id.btn_novocadastrodeusuario:
-                criarUsuario();
+            case R.id.btnlogar:
+                logarUsuario();
                 break;
         }
 
     }
 
-    private void criarUsuario() {
-        String email = edtxt_email.getText().toString().trim();
-        String pwd = edtxt_pwd.getText().toString().trim();
-        String cpwd = edtxt_cpwd.getText().toString().trim();
+    private void logarUsuario() {
+        String email = edtxtemail.getText().toString().trim();
+        String pwd = edtxtpwd.getText().toString().trim();
 
-        if (email.isEmpty() || pwd.isEmpty() || cpwd.isEmpty()){
-            Toast.makeText(this, "Preencha todos os Campos! Obrigado.",Toast.LENGTH_LONG).show();
-        }else if (!pwd.equals(cpwd)){
-            Toast.makeText(this, "Senhas precisam ser iguais.",Toast.LENGTH_LONG).show();
+        if (email.isEmpty() || pwd.isEmpty()){
+            Toast.makeText(getBaseContext(), "Preencha os campos obrigatórios!",Toast.LENGTH_LONG).show();
         }else {
-
             if (verificarInternet()){
-                auth.createUserWithEmailAndPassword(email,pwd).addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
+                auth.signInWithEmailAndPassword(email, pwd).addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if (task.isSuccessful()){
-                            Toast.makeText(getBaseContext(), "Cadastro realizado com sucesso",Toast.LENGTH_LONG).show();
-                        }else {
-                            String resposta = task.getException().toString();
-                            opcoesdeerros(resposta);
+                            startActivity(new Intent(getBaseContext(),homeUser.class));
+                         }else {
+                            String erro = task.getException().toString();
+                            opcoesdeerros(erro);
                         }
                     }
                 });
@@ -82,7 +70,6 @@ public class CadastroUser extends AppCompatActivity implements View.OnClickListe
                 Toast.makeText(getBaseContext(), "Seu Aparelho esta sem conexão com a Internet",Toast.LENGTH_LONG).show();
             }
         }
-
     }
 
     private boolean verificarInternet() {
@@ -97,19 +84,16 @@ public class CadastroUser extends AppCompatActivity implements View.OnClickListe
     }
 
     private void opcoesdeerros(String resp) {
-        if (resp.contains("least 6 characters")){
+        if (resp.contains("password is invalid")){
             Toast.makeText(getBaseContext(), "Senha Inválida.",Toast.LENGTH_LONG).show();
         }else if(resp.contains("address is badly")){
             Toast.makeText(getBaseContext(), "E-mail Inválido.",Toast.LENGTH_LONG).show();
-        }else if (resp.contains("address is already")){
-            Toast.makeText(getBaseContext(), "E-mail já Cadastrado.",Toast.LENGTH_LONG).show();
+        }else if (resp.contains("There is no user")){
+            Toast.makeText(getBaseContext(), "Usuario não cadastrado.",Toast.LENGTH_LONG).show();
         }else if (resp.contains("interrupted connection")){
             Toast.makeText(getBaseContext(), "Sem Conexão, Verifique as Configurações de seu Molde de Internet.",Toast.LENGTH_LONG).show();
         }else {
             Toast.makeText(getBaseContext(), resp,Toast.LENGTH_LONG).show();
         }
     }
-
-
-
 }
