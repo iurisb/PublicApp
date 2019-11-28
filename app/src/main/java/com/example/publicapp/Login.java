@@ -60,6 +60,7 @@ public class Login extends AppCompatActivity implements View.OnClickListener {
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if (task.isSuccessful()){
                             startActivity(new Intent(getBaseContext(),homeUser.class));
+                            finish();
                          }else {
                             String erro = task.getException().toString();
                             //teste

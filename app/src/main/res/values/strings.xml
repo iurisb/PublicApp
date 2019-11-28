@@ -14,4 +14,5 @@
     <string name="confirmeasenha">Confirme a senha:</string>
     <string name="digiteasenhanovamente">Digite a Senha Novamente</string>
     <string name="voltar">Voltar</string>
+    <string name="deslogar">SAIR</string>
 </resources>
