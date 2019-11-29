@@ -66,7 +66,7 @@ public class CadastroUser extends AppCompatActivity implements View.OnClickListe
             Toast.makeText(this, "Senhas precisam ser iguais.",Toast.LENGTH_LONG).show();
         }else {
 
-            if (verificarInternet()){
+            if (Util.verificarInternet(this)){
                 auth.createUserWithEmailAndPassword(email,pwd).addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
@@ -74,7 +74,7 @@ public class CadastroUser extends AppCompatActivity implements View.OnClickListe
                             Toast.makeText(getBaseContext(), "Cadastro realizado com sucesso",Toast.LENGTH_LONG).show();
                         }else {
                             String resposta = task.getException().toString();
-                            opcoesdeerros(resposta);
+                            Util.opcoesdeerros(getBaseContext(),resposta);
                         }
                     }
                 });
@@ -84,32 +84,4 @@ public class CadastroUser extends AppCompatActivity implements View.OnClickListe
         }
 
     }
-
-    private boolean verificarInternet() {
-        ConnectivityManager connectivityManager = (ConnectivityManager) getSystemService(CONNECTIVITY_SERVICE);
-        NetworkInfo networkInfo = connectivityManager.getActiveNetworkInfo();
-
-        if (networkInfo != null && networkInfo.isConnected()){
-            return true;
-        }else{
-            return false;
-        }
-    }
-
-    private void opcoesdeerros(String resp) {
-        if (resp.contains("least 6 characters")){
-            Toast.makeText(getBaseContext(), "Senha Inválida.",Toast.LENGTH_LONG).show();
-        }else if(resp.contains("address is badly")){
-            Toast.makeText(getBaseContext(), "E-mail Inválido.",Toast.LENGTH_LONG).show();
-        }else if (resp.contains("address is already")){
-            Toast.makeText(getBaseContext(), "E-mail já Cadastrado.",Toast.LENGTH_LONG).show();
-        }else if (resp.contains("interrupted connection")){
-            Toast.makeText(getBaseContext(), "Sem Conexão, Verifique as Configurações de seu Molde de Internet.",Toast.LENGTH_LONG).show();
-        }else {
-            Toast.makeText(getBaseContext(), resp,Toast.LENGTH_LONG).show();
-        }
-    }
-
-
-
 }

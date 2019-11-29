@@ -1,8 +1,6 @@
 package com.example.publicapp;
 
 import android.content.Intent;
-import android.net.ConnectivityManager;
-import android.net.NetworkInfo;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -54,7 +52,7 @@ public class Login extends AppCompatActivity implements View.OnClickListener {
         if (email.isEmpty() || pwd.isEmpty()){
             Toast.makeText(getBaseContext(), "Preencha os campos obrigatórios!",Toast.LENGTH_LONG).show();
         }else {
-            if (verificarInternet()){
+            if (Util.verificarInternet(this)){
                 auth.signInWithEmailAndPassword(email, pwd).addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
@@ -63,39 +61,13 @@ public class Login extends AppCompatActivity implements View.OnClickListener {
                             finish();
                          }else {
                             String erro = task.getException().toString();
-                            //teste
-                            opcoesdeerros(erro);
+                            Util.opcoesdeerros(getBaseContext(),erro);
                         }
                     }
                 });
             }else {
                 Toast.makeText(getBaseContext(), "Seu Aparelho esta sem conexão com a Internet",Toast.LENGTH_LONG).show();
             }
-        }
-    }
-
-    private boolean verificarInternet() {
-        ConnectivityManager connectivityManager = (ConnectivityManager) getSystemService(CONNECTIVITY_SERVICE);
-        NetworkInfo networkInfo = connectivityManager.getActiveNetworkInfo();
-
-        if (networkInfo != null && networkInfo.isConnected()){
-            return true;
-        }else{
-            return false;
-        }
-    }
-
-    private void opcoesdeerros(String resp) {
-        if (resp.contains("password is invalid")){
-            Toast.makeText(getBaseContext(), "Senha Inválida.",Toast.LENGTH_LONG).show();
-        }else if(resp.contains("address is badly")){
-            Toast.makeText(getBaseContext(), "E-mail Inválido.",Toast.LENGTH_LONG).show();
-        }else if (resp.contains("There is no user")){
-            Toast.makeText(getBaseContext(), "Usuario não cadastrado.",Toast.LENGTH_LONG).show();
-        }else if (resp.contains("interrupted connection")){
-            Toast.makeText(getBaseContext(), "Sem Conexão, Verifique as Configurações de seu Molde de Internet.",Toast.LENGTH_LONG).show();
-        }else {
-            Toast.makeText(getBaseContext(), resp,Toast.LENGTH_LONG).show();
         }
     }
 }
