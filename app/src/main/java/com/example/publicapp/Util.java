@@ -5,6 +5,11 @@ import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
+
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+
 import static android.content.Context.CONNECTIVITY_SERVICE;
 
 // Classe onde são criados métodos que serão usados em mais de uma Activity
@@ -39,4 +44,5 @@ public class Util {
             Toast.makeText(context, resp,Toast.LENGTH_LONG).show();
         }
     }
+
 }
