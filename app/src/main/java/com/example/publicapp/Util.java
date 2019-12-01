@@ -40,6 +40,14 @@ public class Util {
             Toast.makeText(context, "Sem Conexão, Verifique as Configurações de seu Molde de Internet.",Toast.LENGTH_LONG).show();
         }else if (resp.contains("There is no user")){
             Toast.makeText(context, "Usuario não cadastrado.",Toast.LENGTH_LONG).show();
+        }else if (resp.contains("INVALID_EMAIL")){
+            Toast.makeText(context, "E-mail inválido.",Toast.LENGTH_LONG).show();
+        }else if (resp.contains("EMAIL_NOT_FOUND")){
+            Toast.makeText(context, "E-mail não cadastrado.",Toast.LENGTH_LONG).show();
+        }else if (resp.contains("does not have a password")){
+            Toast.makeText(context, "Senha inválida.",Toast.LENGTH_LONG).show();
+        }else if (resp.contains("try again later")){
+            Toast.makeText(context, "Excesso de Tentativas, tente novamente mais tarde.",Toast.LENGTH_LONG).show();
         }else {
             Toast.makeText(context, resp,Toast.LENGTH_LONG).show();
         }

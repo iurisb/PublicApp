@@ -53,27 +53,28 @@
 
     <!-- android:importantForAutofill="no"  -verificar essa instrução depois-->
 
-    <CheckBox
-        android:id="@+id/checkBox"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="32dp"
-        android:text="@string/AceitarTermo"
-        app:layout_constraintEnd_toEndOf="@+id/edtxt_senhalogin"
-        app:layout_constraintStart_toStartOf="@+id/edtxt_senhalogin"
-        app:layout_constraintTop_toBottomOf="@+id/edtxt_senhalogin"
-        />
+    <Button
+    android:id="@+id/btnlogar"
+    android:layout_width="150dp"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="32dp"
+    android:background="@drawable/bg_button_rounded"
+    android:text="@string/Entrar"
+    android:textColor="@color/branco"
+    app:layout_constraintEnd_toEndOf="@+id/edtxt_senhalogin"
+    app:layout_constraintStart_toStartOf="@+id/edtxt_senhalogin"
+    app:layout_constraintTop_toBottomOf="@+id/edtxt_senhalogin" />
 
     <Button
-        android:id="@+id/btnlogar"
+        android:id="@+id/btn_esquecisenha"
         android:layout_width="150dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="32dp"
-        android:text="@string/Entrar"
-        app:layout_constraintEnd_toEndOf="@+id/checkBox"
-        app:layout_constraintStart_toStartOf="@+id/checkBox"
-        app:layout_constraintTop_toBottomOf="@+id/checkBox"
-        android:background="@drawable/bg_button_rounded"
-        android:textColor="@color/branco"/>
+        android:layout_marginTop="8dp"
+        android:background="@drawable/bg_button_rounded2"
+        android:text="@string/esquecisenha"
+        android:textColor="@color/branco"
+        app:layout_constraintEnd_toEndOf="@+id/btnlogar"
+        app:layout_constraintStart_toStartOf="@+id/btnlogar"
+        app:layout_constraintTop_toBottomOf="@+id/btnlogar" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
