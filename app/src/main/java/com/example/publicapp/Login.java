@@ -8,8 +8,15 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.cardview.widget.CardView;
 
+import com.google.android.gms.auth.api.signin.GoogleSignIn;
+import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
+import com.google.android.gms.auth.api.signin.GoogleSignInClient;
+import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
+import com.google.android.gms.common.api.ApiException;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
@@ -17,9 +24,11 @@ import com.google.firebase.auth.FirebaseAuth;
 
 public class Login extends AppCompatActivity implements View.OnClickListener {
 
-    FirebaseAuth auth;
-    EditText edtxtemail, edtxtpwd;
-    Button btnLogar, btnEsqueciSenha;
+    private FirebaseAuth auth;
+    private EditText edtxtemail, edtxtpwd;
+    private Button btnLogar, btnEsqueciSenha;
+    private CardView cardView_googleLogin;
+    private GoogleSignInClient googleSignInClient;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,18 +39,33 @@ public class Login extends AppCompatActivity implements View.OnClickListener {
         edtxtpwd = (EditText) findViewById(R.id.edtxt_senhalogin);
         btnLogar = (Button) findViewById(R.id.btnlogar);
         btnEsqueciSenha = (Button) findViewById(R.id.btn_esquecisenha);
+        cardView_googleLogin = (CardView) findViewById(R.id.cardview_logingoogle);
 
         auth = FirebaseAuth.getInstance();
+        IniciarServicoGoogle();
+
         btnLogar.setOnClickListener(this);
         btnEsqueciSenha.setOnClickListener(this);
+        cardView_googleLogin.setOnClickListener(this);
 
+    }
 
+    private void IniciarServicoGoogle() {
+        // Configure Google Sign In
+        GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
+                .requestIdToken(getString(R.string.default_web_client_id))
+                .requestEmail()
+                .build();
 
+        googleSignInClient = GoogleSignIn.getClient(this,gso);
     }
 
     @Override
     public void onClick(View view) {
         switch (view.getId()){
+            case R.id.cardview_logingoogle:
+                logarComContaGoogle();
+                break;
             case R.id.btnlogar:
                 logarUsuario();
                 break;
@@ -49,6 +73,35 @@ public class Login extends AppCompatActivity implements View.OnClickListener {
                 recuperarSenha();
                 break;
 
+        }
+
+    }
+
+    private void logarComContaGoogle() {
+        GoogleSignInAccount account = GoogleSignIn.getLastSignedInAccount(this);
+        if (account == null){
+
+            startActivityForResult(googleSignInClient.getSignInIntent(), 587);
+
+        }else {
+            Toast.makeText(getBaseContext(), "Usuario Logado.",Toast.LENGTH_LONG).show();
+            startActivity(new Intent(getBaseContext(),homeUser.class));
+        }
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+
+        if (requestCode == 587){
+            Task<GoogleSignInAccount> task = GoogleSignIn.getSignedInAccountFromIntent(data);
+            try {
+                GoogleSignInAccount account = task.getResult(ApiException.class);
+                startActivity(new Intent(getBaseContext(),homeUser.class));
+            } catch (ApiException e) {
+                Toast.makeText(getBaseContext(), "Erro: " + e.toString(),Toast.LENGTH_LONG).show();
+                e.printStackTrace();
+            }
         }
 
     }
