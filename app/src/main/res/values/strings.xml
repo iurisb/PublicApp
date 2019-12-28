@@ -16,4 +16,7 @@
     <string name="voltar">Voltar</string>
     <string name="deslogar">SAIR</string>
     <string name="esquecisenha">Esqueci Senha</string>
+    <string name="facebook_app_id">833853813724203</string>
+    <string name="fb_login_protocol_scheme">fb833853813724203</string>
+
 </resources>
