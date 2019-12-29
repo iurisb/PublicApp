@@ -12,7 +12,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="86dp"
+        android:layout_marginTop="32dp"
         android:layout_marginEnd="8dp"
         android:contentDescription="@string/descricaoImgLogo"
         android:hapticFeedbackEnabled="false"
@@ -25,16 +25,16 @@
         android:id="@+id/edtxt_emaillogin"
         android:layout_width="@dimen/LoginEmail"
         android:layout_height="50dp"
-        android:layout_marginTop="64dp"
+        android:layout_marginTop="24dp"
         android:background="@drawable/bg_edittext_rounded"
         android:ems="10"
         android:hint="@string/Email"
         android:importantForAutofill="no"
         android:inputType="textEmailAddress"
+        android:paddingLeft="8dp"
         app:layout_constraintEnd_toEndOf="@+id/imageView"
         app:layout_constraintStart_toStartOf="@+id/imageView"
-        app:layout_constraintTop_toBottomOf="@+id/imageView"
-        android:paddingLeft="8dp"/>
+        app:layout_constraintTop_toBottomOf="@+id/imageView" />
 
     <EditText
         android:id="@+id/edtxt_senhalogin"
@@ -54,16 +54,16 @@
     <!-- android:importantForAutofill="no"  -verificar essa instrução depois-->
 
     <Button
-    android:id="@+id/btnlogar"
-    android:layout_width="150dp"
-    android:layout_height="wrap_content"
-    android:layout_marginTop="32dp"
-    android:background="@drawable/bg_button_rounded"
-    android:text="@string/Entrar"
-    android:textColor="@color/branco"
-    app:layout_constraintEnd_toEndOf="@+id/edtxt_senhalogin"
-    app:layout_constraintStart_toStartOf="@+id/edtxt_senhalogin"
-    app:layout_constraintTop_toBottomOf="@+id/edtxt_senhalogin" />
+        android:id="@+id/btnlogar"
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:background="@drawable/bg_button_rounded"
+        android:text="@string/Entrar"
+        android:textColor="@color/branco"
+        app:layout_constraintEnd_toEndOf="@+id/edtxt_senhalogin"
+        app:layout_constraintStart_toStartOf="@+id/edtxt_senhalogin"
+        app:layout_constraintTop_toBottomOf="@+id/edtxt_senhalogin" />
 
     <Button
         android:id="@+id/btn_esquecisenha"
@@ -80,18 +80,18 @@
 
     <androidx.cardview.widget.CardView
         android:id="@+id/cardview_logingoogle"
-        android:layout_width="200dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="32dp"
+        android:layout_width="250dp"
+        android:layout_height="80dp"
+        android:layout_marginTop="8dp"
+        android:clickable="true"
+        android:focusable="true"
         android:foreground="?attr/selectableItemBackground"
         app:cardCornerRadius="10dp"
         app:cardElevation="8dp"
         app:cardUseCompatPadding="true"
         app:layout_constraintEnd_toEndOf="@+id/btn_esquecisenha"
         app:layout_constraintStart_toStartOf="@+id/btn_esquecisenha"
-        app:layout_constraintTop_toBottomOf="@+id/btn_esquecisenha"
-        android:clickable="true"
-        android:focusable="true">
+        app:layout_constraintTop_toBottomOf="@+id/btn_esquecisenha">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -100,17 +100,57 @@
             android:orientation="vertical">
 
             <ImageView
-                android:id="@+id/imageView4"
+                android:id="@+id/imglogingoogle"
                 android:layout_width="wrap_content"
                 android:layout_height="20dp"
+                android:layout_marginTop="3dp"
                 android:src="@drawable/logingoogle" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Conta Google"
+                android:text="@string/logingoogle"
                 android:textSize="16sp"
-                android:textStyle="bold"/>
+                android:textStyle="bold" />
+        </LinearLayout>
+
+    </androidx.cardview.widget.CardView>
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cardview_loginfacebook"
+        android:layout_width="250dp"
+        android:layout_height="80dp"
+        android:clickable="true"
+        android:focusable="true"
+        android:foreground="?attr/selectableItemBackground"
+        app:cardCornerRadius="10dp"
+        app:cardElevation="8dp"
+        app:cardUseCompatPadding="true"
+        app:layout_constraintEnd_toEndOf="@+id/cardview_logingoogle"
+        app:layout_constraintStart_toStartOf="@+id/cardview_logingoogle"
+        app:layout_constraintTop_toBottomOf="@+id/cardview_logingoogle">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/facebook"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <ImageView
+                android:id="@+id/imgloginfacebook"
+                android:layout_width="wrap_content"
+                android:layout_height="20dp"
+                android:layout_marginTop="3dp"
+                android:src="@drawable/loginfacebook" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/loginfacebook"
+                android:textColor="@color/branco"
+                android:textSize="16sp"
+                android:textStyle="bold" />
         </LinearLayout>
 
     </androidx.cardview.widget.CardView>

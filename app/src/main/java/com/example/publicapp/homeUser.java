@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
+import com.facebook.login.LoginManager;
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
 import com.google.android.gms.auth.api.signin.GoogleSignInClient;
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
@@ -34,6 +35,7 @@ public class homeUser extends AppCompatActivity implements View.OnClickListener 
         switch (view.getId()){
             case R.id.btndeslogar:
                 googleSignInClient.signOut();
+                LoginManager.getInstance().logOut();
                 FirebaseAuth.getInstance().signOut();
                 finish();
                 break;

@@ -18,5 +18,7 @@
     <string name="esquecisenha">Esqueci Senha</string>
     <string name="facebook_app_id">833853813724203</string>
     <string name="fb_login_protocol_scheme">fb833853813724203</string>
+    <string name="loginfacebook">Usar Conta do Facebook</string>
+    <string name="logingoogle">Usar conta do Google</string>
 
 </resources>

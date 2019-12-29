@@ -13,6 +13,12 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
 
+import com.facebook.AccessToken;
+import com.facebook.CallbackManager;
+import com.facebook.FacebookCallback;
+import com.facebook.FacebookException;
+import com.facebook.login.LoginManager;
+import com.facebook.login.LoginResult;
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
 import com.google.android.gms.auth.api.signin.GoogleSignInClient;
@@ -22,16 +28,20 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthCredential;
 import com.google.firebase.auth.AuthResult;
+import com.google.firebase.auth.FacebookAuthProvider;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.GoogleAuthProvider;
+
+import java.util.Arrays;
 
 public class Login extends AppCompatActivity implements View.OnClickListener {
 
     private FirebaseAuth auth;
     private EditText edtxtemail, edtxtpwd;
     private Button btnLogar, btnEsqueciSenha;
-    private CardView cardView_googleLogin;
+    private CardView cardView_googleLogin, cardView_facebookLogin;
     private GoogleSignInClient googleSignInClient;
+    private CallbackManager callbackManager;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,14 +53,40 @@ public class Login extends AppCompatActivity implements View.OnClickListener {
         btnLogar = (Button) findViewById(R.id.btnlogar);
         btnEsqueciSenha = (Button) findViewById(R.id.btn_esquecisenha);
         cardView_googleLogin = (CardView) findViewById(R.id.cardview_logingoogle);
+        cardView_facebookLogin = (CardView) findViewById(R.id.cardview_loginfacebook);
+
 
         auth = FirebaseAuth.getInstance();
         IniciarServicoGoogle();
+        IniciarServicoFacebook();
 
         btnLogar.setOnClickListener(this);
         btnEsqueciSenha.setOnClickListener(this);
         cardView_googleLogin.setOnClickListener(this);
+        cardView_facebookLogin.setOnClickListener(this);
 
+    }
+
+    private void IniciarServicoFacebook() {
+
+        callbackManager = CallbackManager.Factory.create();
+
+        LoginManager.getInstance().registerCallback(callbackManager, new FacebookCallback<LoginResult>() {
+            @Override
+            public void onSuccess(LoginResult loginResult) {
+                credencialdofacebooknofirebase(loginResult.getAccessToken());
+            }
+
+            @Override
+            public void onCancel() {
+
+            }
+
+            @Override
+            public void onError(FacebookException error) {
+
+            }
+        });
     }
 
     private void IniciarServicoGoogle() {
@@ -66,6 +102,9 @@ public class Login extends AppCompatActivity implements View.OnClickListener {
     @Override
     public void onClick(View view) {
         switch (view.getId()){
+            case R.id.cardview_loginfacebook:
+                logarComContaFacebook();
+                break;
             case R.id.cardview_logingoogle:
                 logarComContaGoogle();
                 break;
@@ -78,6 +117,10 @@ public class Login extends AppCompatActivity implements View.OnClickListener {
 
         }
 
+    }
+
+    private void logarComContaFacebook() {
+        LoginManager.getInstance().logInWithReadPermissions(this, Arrays.asList("public_profile","email"));
     }
 
     private void logarComContaGoogle() {
@@ -94,6 +137,7 @@ public class Login extends AppCompatActivity implements View.OnClickListener {
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        callbackManager.onActivityResult(requestCode, resultCode, data);
         super.onActivityResult(requestCode, resultCode, data);
 
         if (requestCode == 587){
@@ -160,6 +204,22 @@ public class Login extends AppCompatActivity implements View.OnClickListener {
     private void credencialdogooglenofirebase(GoogleSignInAccount acct) {
 
         AuthCredential credential = GoogleAuthProvider.getCredential(acct.getIdToken(), null);
+        auth.signInWithCredential(credential)
+                .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
+                    @Override
+                    public void onComplete(@NonNull Task<AuthResult> task) {
+                        if (task.isSuccessful()) {
+                            startActivity(new Intent(getBaseContext(),homeUser.class));
+                        } else {
+                            Util.opcoesdeerros(getBaseContext(),task.toString());
+                        }
+                    }
+                });
+    }
+
+    private void credencialdofacebooknofirebase(AccessToken token) {
+
+        AuthCredential credential = FacebookAuthProvider.getCredential(token.getToken());
         auth.signInWithCredential(credential)
                 .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
                     @Override
