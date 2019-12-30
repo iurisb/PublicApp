@@ -2,6 +2,7 @@ package com.example.publicapp;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.cardview.widget.CardView;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -26,8 +27,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         auth = FirebaseAuth.getInstance();
 
-        Button login = (Button) findViewById(R.id.btnlogar);
-        Button cadastro = (Button) findViewById(R.id.btn_cadastrar);
+        CardView login = (CardView) findViewById(R.id.cardview_loginActivity);
+        CardView cadastro = (CardView) findViewById(R.id.cardview_CadastroActivity);
 
         EstadodaAutenticacao();
 
@@ -56,14 +57,14 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         user = auth.getCurrentUser();
 
         switch (view.getId()){
-            case R.id.btnlogar:
+            case R.id.cardview_loginActivity:
                 if (user!=null){
                     startActivity(new Intent(this, homeUser.class));
                 }else {
                     startActivity(new Intent(this, Login.class));
                 }
                 break;
-            case R.id.btn_cadastrar:
+            case R.id.cardview_CadastroActivity:
                 if (user!=null){
                     Toast.makeText(getBaseContext(),"Usuário Logado.",Toast.LENGTH_LONG).show();
                     startActivity(new Intent(this, homeUser.class));
