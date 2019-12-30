@@ -45,6 +45,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 FirebaseUser usuario = firebaseAuth.getCurrentUser();
                 if (usuario!=null){
                     Toast.makeText(getBaseContext(),usuario.getEmail(),Toast.LENGTH_LONG).show();
+                    finish();
+                    startActivity(new Intent(getBaseContext(),index.class));
                 }else {
                     Toast.makeText(getBaseContext(),"Usuário não logado.",Toast.LENGTH_LONG).show();
                 }
@@ -59,6 +61,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         switch (view.getId()){
             case R.id.cardview_loginActivity:
                 if (user!=null){
+                    finish();
                     startActivity(new Intent(this, homeUser.class));
                 }else {
                     startActivity(new Intent(this, Login.class));
@@ -67,6 +70,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             case R.id.cardview_CadastroActivity:
                 if (user!=null){
                     Toast.makeText(getBaseContext(),"Usuário Logado.",Toast.LENGTH_LONG).show();
+                    finish();
                     startActivity(new Intent(this, homeUser.class));
                 }else {
                     startActivity(new Intent(this, CadastroUser.class));

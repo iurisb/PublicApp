@@ -131,6 +131,7 @@ public class Login extends AppCompatActivity implements View.OnClickListener {
 
         }else {
             Toast.makeText(getBaseContext(), "Usuario Logado.",Toast.LENGTH_LONG).show();
+            finish();
             startActivity(new Intent(getBaseContext(),homeUser.class));
         }
     }
@@ -209,6 +210,7 @@ public class Login extends AppCompatActivity implements View.OnClickListener {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if (task.isSuccessful()) {
+                            finish();
                             startActivity(new Intent(getBaseContext(),homeUser.class));
                         } else {
                             Util.opcoesdeerros(getBaseContext(),task.toString());
@@ -225,6 +227,7 @@ public class Login extends AppCompatActivity implements View.OnClickListener {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if (task.isSuccessful()) {
+                            finish();
                             startActivity(new Intent(getBaseContext(),homeUser.class));
                         } else {
                             Util.opcoesdeerros(getBaseContext(),task.toString());

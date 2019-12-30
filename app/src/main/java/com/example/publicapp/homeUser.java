@@ -2,6 +2,7 @@ package com.example.publicapp;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -38,6 +39,7 @@ public class homeUser extends AppCompatActivity implements View.OnClickListener 
                 LoginManager.getInstance().logOut();
                 FirebaseAuth.getInstance().signOut();
                 finish();
+                startActivity(new Intent(getBaseContext(), MainActivity.class));
                 break;
         }
     }
